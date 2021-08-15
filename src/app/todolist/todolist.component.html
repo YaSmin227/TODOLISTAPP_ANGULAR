@@ -1,0 +1,30 @@
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container ">
+            <div class="col-md-12">
+                <div class="card px-3">
+                    <div class="card-body">
+                        <h4 class="card-title"> Todo list</h4>
+                        <div class="add-items d-flex">
+                            <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?" [(ngModel)]="taskName"> 
+                            <button (click)="AddItems()" class="add btn btn-primary font-weight-bold todo-list-add-btn">Add</button> 
+                        </div>
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list" *ngFor="let task of toDoListData; let i=index">
+                                <li  style="width:100%">
+                                    <div class="form-check d-flex justidy-content-between" >
+                                        <label class="form-check-label" [ngClass]="{'overline': isChecked}"> 
+                                            <input class="checkbox" type="checkbox" (change)="checked($event)">{{task}}{{isChecked}}{{i}}
+                                            <i class="input-helper"></i>
+                                        </label>
+                                        <i class="remove mdi mdi-close-circle-outline" (click)="removeItem(i)"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
