@@ -13,8 +13,9 @@
                             <ul class="d-flex flex-column-reverse todo-list" *ngFor="let task of toDoListData; let i=index">
                                 <li  style="width:100%">
                                     <div class="form-check d-flex justidy-content-between" >
-                                        <label class="form-check-label" [ngClass]="{'overline': isChecked}"> 
-                                            <input class="checkbox" type="checkbox" (change)="checked($event)">{{task}}{{isChecked}}{{i}}
+                                        <label class="form-check-label" [ngClass]="{'overline': task.isActive}"> 
+                                            <input class="checkbox" type="checkbox" (change)="checked(i)">
+                                            {{task.taskTitle}}
                                             <i class="input-helper"></i>
                                         </label>
                                         <i class="remove mdi mdi-close-circle-outline" (click)="removeItem(i)"></i>

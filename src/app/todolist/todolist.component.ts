@@ -6,36 +6,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
-  toDoListData: string[] = []
+  toDoListData: {taskTitle:string,isActive:boolean}[] = []
   taskName: string
   isChecked: boolean
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
   AddItems() {
     if( this.taskName === undefined || this.taskName === ''){
       alert('input cant be empty')
     }else{
       console.log(this.taskName)
-      this.toDoListData.push(this.taskName)
+      this.toDoListData.push({taskTitle : this.taskName , isActive : false})
       this.taskName=''
     }
     
   }
-  checked(event) {
-    if (event.target.checked) {
-      this.isChecked = true
+  checked(i) {
+    if (this.toDoListData[i].isActive===false) {
+      this.toDoListData[i].isActive = true
 
     } else {
-      this.isChecked = false
+      this.toDoListData[i].isActive=false
     }
-    console.log(this.isChecked)
+    
   }
 
   removeItem(i){
  
     this.toDoListData.splice(i,1)
+  }
+  
+  ngOnInit(): void {
   }
 }
